@@ -31,11 +31,11 @@
 - Compiler version: 0.13.0
 - Compile command: `/tmp/zig-linux-x86_64-0.13.0/zig cc -std=c11 -Wall -Wextra -O2 c_environment_global_state_footgun_harness.c -o c_harness`
 - Compile ok: True
-- Compile elapsed: 0.193s
+- Compile elapsed: 0.316s
 - cases.json: 39857 bytes
 - c_environment_global_state_footgun_harness.c: 9960 bytes
 - c_harness binary: 23072 bytes
-- Total run elapsed: 0.509s
+- Total run elapsed: 0.859s
 - Timing: time.perf_counter()
 - setenv/unsetenv available: True
 - putenv available: True
@@ -75,3 +75,7 @@ Compiler search order: zig cc → cc → clang → gcc
 C environment APIs expose process-global mutable state. getenv() returns pointers into shared state with lifetime caveats. setenv/unsetenv/putenv mutate global process state; putenv has caller-buffer ownership footguns. Returned pointers can be invalidated by subsequent mutations. setenv after threads is dangerous; locking getenv alone does not solve pointer-lifetime. POSIX APIs are not ISO C. Hidden environment reads inside other libc APIs (getaddrinfo/resolver/locale/timezone) are real but out of scope. Safe claims distinguish local libc observations from ISO C guarantees, POSIX wording, glibc/illumos behavior, resolver behavior, thread safety, and production security.
 
 Per-case results: results_rows.csv
+
+## Development-history note
+
+The final committed state is compiler-validated and auditable from committed artifacts (RESULTS.md, results_rows.csv, VERIFY.md). Any "clean first run" or "no harness fixes needed" statements are self-reported and not independently proven by commit history – this repo was pushed as a single initial commit.

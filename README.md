@@ -94,6 +94,8 @@ See [RESULTS.md](RESULTS.md) and [results_rows.csv](results_rows.csv).
 
 Compiler-validated with **zig cc 0.13.0** (clang 18.1.6).
 
+**Development-history note:** the final committed state is compiler-validated and auditable from committed artifacts (RESULTS.md, results_rows.csv, VERIFY.md). Any "clean first run" or "no harness fixes needed" statements are self-reported and not independently proven by commit history – this repo was pushed as a single initial commit.
+
 ## Files
 
 - `generate_cases.py` – generate 53 deterministic synthetic test cases
