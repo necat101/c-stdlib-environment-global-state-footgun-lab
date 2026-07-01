@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+c_harness
+*.o
+*.so
+/results/
+tmp/
